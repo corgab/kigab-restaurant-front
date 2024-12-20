@@ -49,7 +49,7 @@
                         </div>
                     </router-link>
                     <div class="hidden md:ml-6 md:block">
-                        <div class="flex space-x-4">
+                        <div class="flex space-x-3">
                             <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                                 isActive(item.href.name)
                                     ? 'bg-hover text-main'
@@ -61,8 +61,7 @@
                         </div>
                     </div>
                     <!-- Notification Bell and Profile Menu -->
-                    <div
-                        class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
                         <button type="button"
                             class="hidden md:block rounded-full py-1 px-2 text-main border-solid border-2 border-main">
                             <span class="text-main font-medium">Book a Table</span>
@@ -76,8 +75,8 @@
                 <div class="space-y-1 px-2 pb-3 pt-2">
                     <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                         isActive(item.href.name)
-                            ? 'bg-gray-900 text-white'
-                            : 'text-main hover:bg-gray-700 hover:text-white',
+                            ? 'bg-hover text-main'
+                            : 'text-main hover:bg-hover',
                         'block rounded-full px-3 py-2 text-base font-medium',
                     ]" :aria-current="isActive(item.href.name) ? 'page' : undefined">
                         {{ item.name }}
@@ -85,7 +84,7 @@
                 </div>
                 <!-- Book a Table -->
                 <button
-                    class="block w-full rounded-full border-2 border-main bg-main text-white py-2 px-3 text-center font-medium text-base">
+                    class="block w-full rounded-full border-2 border-main bg-main text-white px-3 py-2 text-center font-medium text-base">
                     Book a Table
                 </button>
             </div>
