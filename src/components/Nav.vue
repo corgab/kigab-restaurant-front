@@ -1,12 +1,29 @@
 <template>
-    <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <nav>
+        <div class="bg-[#474747]">
+            <div class="container mx-auto">
+                <div class="flex justify-between py-2">
+                    <!-- Info -->
+                    <div class="text-[#F9F9F7] font-normal text-sm">
+                        <h1 v-if="restaurant.phone">{{ restaurant.phone }}</h1>
+                        <h1 v-if="restaurant.email">{{ restaurant.email }}</h1>
+                    </div>
+                    <!-- Socials -->
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto">
+            <!-- <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8"> -->
             <div class="relative flex h-16 items-center justify-between">
                 <!-- Mobile menu button -->
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                     <button @click="isMobileMenuOpen = !isMobileMenuOpen"
-                        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        class="inline-flex items-center justify-center rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                         <span class="sr-only">Open main menu</span>
+                        <!-- <img v-if="!isMobileMenuOpen" :src="restaurant.img" :alt="restaurant.name"> -->
                         <svg v-if="!isMobileMenuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -21,73 +38,77 @@
                 </div>
 
                 <!-- Logo and navigation links -->
-                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-between">
                     <router-link class="flex shrink-0 items-center" :to="{ name: 'HomePage' }">
                         <!-- Inserire immagine ristorante -->
                         <img class="h-8 w-auto"
                             src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
                             :alt="restaurant.name" />
+                        <div class="text-main rounded-full px-3 py-1 font-bold text-xl">
+                            {{ restaurant.name }}
+                        </div>
                     </router-link>
-                    <div class="hidden sm:ml-6 sm:block">
+                    <div class="hidden md:ml-6 md:block">
                         <div class="flex space-x-4">
                             <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                                 isActive(item.href.name)
-                                    ? 'bg-gray-900 text-white'
-                                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'rounded-md px-3 py-2 text-sm font-medium'
+                                    ? 'bg-hover text-main'
+                                    : 'text-main hover:bg-hover',
+                                'rounded-full px-5 py-2 text-sm font-medium',
                             ]" :aria-current="isActive(item.href.name) ? 'page' : undefined">
                                 {{ item.name }}
                             </router-link>
                         </div>
                     </div>
-                </div>
-                <!-- Notification Bell and Profile Menu -->
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button type="button"
-                        class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span class="sr-only">Guarda le notifiche</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0a3 3 0 11-6 0h6z" />
-                        </svg>
-                    </button>
-
+                    <!-- Notification Bell and Profile Menu -->
+                    <div
+                        class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:ml-6 md:pr-0">
+                        <button type="button"
+                            class="hidden md:block rounded-full py-1 px-2 text-main border-solid border-2 border-main">
+                            <span class="text-main font-medium">Book a Table</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- Mobile menu -->
-            <div v-if="isMobileMenuOpen" class="sm:hidden">
+            <div v-if="isMobileMenuOpen" class="md:hidden">
                 <div class="space-y-1 px-2 pb-3 pt-2">
                     <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                         isActive(item.href.name)
                             ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'block rounded-md px-3 py-2 text-base font-medium'
+                            : 'text-main hover:bg-gray-700 hover:text-white',
+                        'block rounded-full px-3 py-2 text-base font-medium',
                     ]" :aria-current="isActive(item.href.name) ? 'page' : undefined">
                         {{ item.name }}
                     </router-link>
                 </div>
+                <!-- Book a Table -->
+                <button
+                    class="block w-full rounded-full border-2 border-main bg-main text-white py-2 px-3 text-center font-medium text-base">
+                    Book a Table
+                </button>
             </div>
         </div>
     </nav>
 </template>
 
 <script>
-// import { fetchRestaurant } from '@/services/restaurants';
-import { fetchRestaurants } from '../services/restaurants';  // percorso relativo
+import { fetchRestaurants } from '@/services/restaurants';
+// import { fetchRestaurants } from '../services/restaurants';
 
 export default {
     data() {
         return {
             isMobileMenuOpen: false,
             navigation: [
-                { name: 'Login', href: { name: 'Login' } },
-                { name: 'Team', href: { name: '' } },
-                { name: 'Projects', href: { name: '' } },
-                { name: 'Calendar', href: { name: '' } },
+                { name: 'Home', href: { name: 'HomePage' } },
+                { name: 'About', href: { name: '' } },
+                { name: 'Menu', href: { name: '' } },
+                { name: 'Pages', href: { name: '' } },
+                { name: 'Contact', href: { name: '' } },
             ],
-            restaurant: {}
+            restaurant: {},
         };
     },
     methods: {
@@ -99,10 +120,10 @@ export default {
         try {
             const response = await fetchRestaurants();
             this.restaurant = response.data;
-            console.log(response.data);
+            console.log(response);
         } catch (error) {
             console.error('Errore nel recupero utenti:', error);
         }
-    }
+    },
 };
 </script>
