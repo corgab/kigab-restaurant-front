@@ -4,7 +4,8 @@
             <div class="container mx-auto">
                 <div class="flex justify-between py-2">
                     <!-- Info -->
-                    <div class="text-[#F9F9F7] font-normal text-sm">
+                    <div class="text-[#F9F9F7] font-normal text-sm flex gap-x-4">
+                        <!-- !! Da inserire icone -->
                         <h1 v-if="restaurant.phone">{{ restaurant.phone }}</h1>
                         <h1 v-if="restaurant.email">{{ restaurant.email }}</h1>
                     </div>
@@ -63,7 +64,7 @@
                     <!-- Notification Bell and Profile Menu -->
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
                         <div class="hidden md:block">
-                            <Button :text="'Book a table'" />
+                            <Button :text="'Book a table'" :isSmall="true" />
 
                         </div>
                     </div>
@@ -84,8 +85,8 @@
                 </div>
                 <!-- Book a Table -->
                 <div
-                    class="block mx-auto rounded-full border-2 border-main bg-main text-white px-1 py-2 text-center font-medium text-base ">
-                    <Button :text="'Book a table'" :textColor="'text-white'" />
+                    class="block mx-auto rounded-full border-2 border-main bg-main px-1 py-2 text-center font-medium text-base ">
+                    <Button :text="'Book a table'" class="text-white" />
                 </div>
             </div>
         </div>
