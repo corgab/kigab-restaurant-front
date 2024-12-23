@@ -62,10 +62,10 @@
                     </div>
                     <!-- Notification Bell and Profile Menu -->
                     <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
-                        <button type="button"
-                            class="hidden md:block rounded-full py-1 px-2 text-main border-solid border-2 border-main">
-                            <span class="text-main font-medium">Book a Table</span>
-                        </button>
+                        <div class="hidden md:block">
+                            <Button :text="'Book a table'" />
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,20 +83,23 @@
                     </router-link>
                 </div>
                 <!-- Book a Table -->
-                <button
-                    class="block w-full rounded-full border-2 border-main bg-main text-white px-3 py-2 text-center font-medium text-base">
-                    Book a Table
-                </button>
+                <div
+                    class="block mx-auto rounded-full border-2 border-main bg-main text-white px-1 py-2 text-center font-medium text-base ">
+                    <Button :text="'Book a table'" :textColor="'text-white'" />
+                </div>
             </div>
         </div>
     </nav>
 </template>
 
 <script>
-import { fetchRestaurants } from '@/services/restaurants';
-// import { fetchRestaurants } from '../services/restaurants';
+import { fetchRestaurants } from '@/services/restaurants';;
+import Button from './Button.vue'
 
 export default {
+    components: {
+        Button
+    },
     data() {
         return {
             isMobileMenuOpen: false,
