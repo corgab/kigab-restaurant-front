@@ -6,6 +6,8 @@ export default {
       colors: {
         main: '#2C2F24',
         hover: '#DBDFD0',
+        bg2: '#F9F9F7',
+        gray: '#474747',
       },
     },
   },
