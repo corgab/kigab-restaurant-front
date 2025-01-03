@@ -47,7 +47,7 @@ export default {
         try {
             const response = await fetchRestaurants();
             this.restaurant = response.data;
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             console.error('Errore nel recupero utenti:', error);
         }

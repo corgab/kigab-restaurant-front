@@ -24,7 +24,6 @@
                     <button @click="isMobileMenuOpen = !isMobileMenuOpen"
                         class="inline-flex items-center justify-center rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                         <span class="sr-only">Open main menu</span>
-                        <!-- <img v-if="!isMobileMenuOpen" :src="restaurant.img" :alt="restaurant.name"> -->
                         <svg v-if="!isMobileMenuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -42,9 +41,8 @@
                 <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-between">
                     <router-link class="flex shrink-0 items-center" :to="{ name: 'HomePage' }">
                         <!-- Inserire immagine ristorante -->
-                        <img class="h-8 w-auto"
-                            src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                            :alt="restaurant.name" />
+                        <img v-if="restaurant.image_url" class="h-8 w-auto" :src="restaurant.image_url"
+                            :alt="`${restaurant.name} logo`" />
                         <div class="text-main rounded-full px-3 py-1 font-bold text-xl">
                             {{ restaurant.name }}
                         </div>
@@ -123,9 +121,9 @@ export default {
         try {
             const response = await fetchRestaurants();
             this.restaurant = response.data;
-            console.log(response);
+            // console.log(response);
         } catch (error) {
-            console.error('Errore nel recupero utenti:', error);
+            console.error('Errore nel recupero dei ristoranti:', error);
         }
     },
 };

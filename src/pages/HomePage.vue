@@ -1,8 +1,7 @@
 <template>
-    <div class="">
-        <HeroSection />
-        <WhyUs />
-    </div>
+    <HeroSection :slug="'hero-section'" />
+    <WhyUs />
+
 </template>
 
 <script>

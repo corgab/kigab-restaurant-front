@@ -30,9 +30,6 @@ export default {
             default: false, // Se non viene passato, sarà `false` di default
         },
     },
-    mounted() {
-        console.log('isSmall:', this.isSmall); // Verifica il valore di isSmall
-    },
 }
 </script>
 
