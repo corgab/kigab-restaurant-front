@@ -22,7 +22,7 @@ export default {
         Button
     },
     props: {
-        slug: {
+        sectionSlug: {
             type: String,
             required: true
         }
@@ -34,10 +34,9 @@ export default {
     },
     async created() {
         try {
-            console.log(this.slug);
-            const response = await fetchSection(this.slug);
+            const response = await fetchSection(this.sectionSlug);
             this.section = response.data;
-            console.log(response);
+            // console.log(response);
         } catch (error) {
             console.error('Errore nel recupero della sezione:', error);
         }

@@ -3,12 +3,14 @@
         <div class="relative mx-auto">
             <!-- Immagine -->
             <div class="lg:relative block">
-                <img src="/cibo.jpg" alt="Delicious Food" class="rounded-lg shadow-lg" />
+                <div class="img_container w-max lg:w-2/3  overflow-hidden rounded-lg shadow-lg">
+                    <img :src="image" alt="" class="w-full h-auto rounded-lg shadow-lg" />
+                    <!-- da inserire alt-->
+                </div>
             </div>
-
             <!-- Scheda Informazioni -->
             <div
-                class="block lg:absolute lg:-bottom-8 lg:-right-5 transform  bg-gray text-white p-6 rounded-lg shadow-lg lg:w-2/3 my-4 lg:my-0">
+                class="block lg:absolute lg:-bottom-8 lg:-right-5 transform  bg-gray text-white p-6 rounded-lg shadow-xl lg:w-2/3 my-4 lg:my-0">
                 <h2 class="text-xl font-semibold mb-4">Come and visit us</h2>
                 <div class="space-y-3">
                     <!-- Telefono -->
@@ -38,9 +40,20 @@ export default {
     props: {
         email: String,
         phone: String,
-        address: String
+        address: String,
+        image: String,
     }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.img_container {
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .img_container {
+        width: 450px;
+    }
+}
+</style>

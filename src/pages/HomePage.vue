@@ -1,6 +1,6 @@
 <template>
-    <HeroSection :slug="'hero-section'" />
-    <WhyUs />
+    <HeroSection :sectionSlug="'hero-section'" />
+    <WhyUs :sectionSlug="'about-us'" />
 
 </template>
 

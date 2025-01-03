@@ -4,8 +4,11 @@ import apiClient from './axios';
 export const fetchRestaurants = () => apiClient.get('/restaurants');
 
 // Crea un nuovo ristorante
-export const createRestaurant = (restaurantData) =>
-  apiClient.post('/restaurants', restaurantData);
+// export const createRestaurant = (restaurantData) =>
+//   apiClient.post('/restaurant', restaurantData);
+
+// Per ora da usare questo show
+export const fetchRestaurant = () => apiClient.get('/restaurants/1');
 
 // Elimina un ristorante
 export const deleteRestaurant = (restauratId) =>

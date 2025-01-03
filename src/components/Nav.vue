@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import { fetchRestaurants } from '@/services/restaurants';;
+import { fetchRestaurant } from '@/services/restaurants';;
 import Button from './Button.vue'
 
 export default {
@@ -119,7 +119,7 @@ export default {
     },
     async created() {
         try {
-            const response = await fetchRestaurants();
+            const response = await fetchRestaurant();
             this.restaurant = response.data;
             // console.log(response);
         } catch (error) {

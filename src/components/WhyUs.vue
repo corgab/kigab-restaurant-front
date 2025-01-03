@@ -4,22 +4,16 @@
             <div class="flex flex-wrap justify-center items-center gap-x-20">
                 <!-- Colonna con immagine -->
                 <div class="w-5/12">
-                    <CardInfo :email="restaurant.email" :phone="restaurant.phone" :address="restaurant.address" />
+                    <CardInfo :email="restaurant.email" :phone="restaurant.phone" :address="restaurant.address"
+                        :image="section.image_url" />
                 </div>
                 <!-- Colonna con testo -->
-                <div class="w-5/12 flex flex-col justify-center">
-                    <h1 class="play-fair text-3xl font-bold mb-10 lg:text-4xl	">We provide healthy food for our
-                        family.
-                    </h1>
-                    <h2 class="leading-normal text-gray-900 text-base lg:text-lg mb-10">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, voluptatum. Eum nam
-                        explicabo
-                        cupiditate, molestias velit excepturi in, consequuntur qui vero voluptatibus rerum eius, quia
-                        animi.
-                        Omnis quibusdam in ad.
-                    </h2>
+                <div class=" w-5/12 flex flex-col justify-center">
+                    <h1 class="play-fair text-3xl font-bold mb-10 lg:text-4xl	">{{ section.title }}</h1>
+                    <h2 class="leading-normal text-gray-900 text-base lg:text-lg mb-10">{{ section.content }}</h2>
                     <h3 class="leading-normal text-gray-700 text-base lg:text-lg">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis amet rem autem nostrum in iste
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis amet rem autem nostrum in
+                        iste
                         sapiente? Nesciunt nulla optio
                         tenetur! Similique soluta consectetur hic modi tenetur at fugiat officia vel.
                     </h3>
@@ -32,24 +26,41 @@
 
 <script>
 import CardInfo from './CardInfo.vue';
-import { fetchRestaurants } from '@/services/restaurants';;
+import { fetchRestaurant } from '@/services/restaurants';
+import { fetchSection } from '@/services/sections';
 
 export default {
     components: {
         CardInfo
     },
+    props: {
+        sectionSlug: {
+            type: String,
+            required: true
+        }
+    },
     data() {
         return {
-            restaurant: {}
+            restaurant: {},
+            section: {},
         }
     },
     async created() {
         try {
-            const response = await fetchRestaurants();
-            this.restaurant = response.data;
-            // console.log(response);
+            const [restaurantResponse, sectionResponse] = await Promise.all([
+                fetchRestaurant(),
+                fetchSection(this.sectionSlug)
+            ]);
+
+            this.restaurant = restaurantResponse.data
+            this.section = sectionResponse.data
+
+            // console.log(this.restaurant)
+            // console.log(this.section)
+
+
         } catch (error) {
-            console.error('Errore nel recupero utenti:', error);
+            console.error('Errore nel recupero dei dati:', error);
         }
     },
 }
