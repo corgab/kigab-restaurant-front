@@ -70,7 +70,7 @@
             </div>
 
             <!-- Mobile menu -->
-            <div v-if="isMobileMenuOpen" class="md:hidden">
+            <div v-if="isMobileMenuOpen" class="md:hidden py-5">
                 <div class="space-y-1 px-2 pb-3 pt-2">
                     <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                         isActive(item.href.name)

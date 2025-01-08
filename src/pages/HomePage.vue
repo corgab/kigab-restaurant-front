@@ -1,16 +1,18 @@
 <template>
     <HeroSection :sectionSlug="'hero-section'" />
     <WhyUs :sectionSlug="'about-us'" />
-
+    <ProductsGallery />
 </template>
 
 <script>
 import HeroSection from '@/components/HeroSection.vue';
 import WhyUs from '@/components/WhyUs.vue';
+import ProductsGallery from '@/components/ProductsGallery.vue';
 export default {
     components: {
         HeroSection,
-        WhyUs
+        WhyUs,
+        ProductsGallery
     },
 }
 </script>
