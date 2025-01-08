@@ -1,6 +1,6 @@
 <template>
     <div class="bg-bg2">
-        <div class="container mx-auto py-24">
+        <div class="container mx-auto py-20">
             <div class="flex flex-wrap justify-center items-center gap-x-20">
                 <!-- Colonna con immagine -->
                 <!-- <div class="md:w-5/12"> -->

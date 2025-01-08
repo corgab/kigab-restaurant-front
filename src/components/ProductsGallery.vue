@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto text-center my-10">
+    <div class="container mx-auto text-center py-20">
         <h1 class="text-3xl lg:text-4xl font-bold pb-10 play-fair">Our Products</h1>
         <div class="relative flex items-center justify-center">
             <!-- Indietro -->
