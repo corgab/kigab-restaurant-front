@@ -3,7 +3,8 @@
         <h1 class="text-3xl lg:text-4xl font-bold pb-10 play-fair">Our Products</h1>
         <div class="relative flex items-center justify-center">
             <!-- Indietro -->
-            <button @click="prevSlide" class="absolute left-0 text-4xl w-12 h-12 flex items-center justify-center z-10">
+            <button @click="prevSlide"
+                class="absolute left-2 sm:left-4 text-4xl w-12 h-12 flex items-center justify-center z-10">
                 <i class="bi bi-arrow-left-circle"></i>
             </button>
 
@@ -20,7 +21,8 @@
             </div>
 
             <!-- Avanti -->
-            <button @click="nextSlide" class="absolute right-0 text-4xl w-12 h-12 flex items-center justify-center">
+            <button @click="nextSlide"
+                class="absolute right-2 sm:right-4 text-4xl w-12 h-12 flex items-center justify-center">
                 <i class="bi bi-arrow-right-circle"></i>
             </button>
         </div>
@@ -35,15 +37,22 @@ export default {
         return {
             photos: [],
             currentIndex: 0, // Indice
-            visibleItems: 3, // Numero di elementi visibili
+            visibleItems: 3, // Numero di elementi visibili (default per desktop)
             itemWidth: 0, // Larghezza di ogni elemento
         };
     },
     methods: {
         calculateItemWidth() {
-            // Calcola la larghezza dinamica di un elemento in base alla larghezza del carosello
             const carouselWidth = document.querySelector(".overflow-hidden").clientWidth;
-            this.itemWidth = carouselWidth / this.visibleItems;
+            this.itemWidth = Math.floor(carouselWidth / this.visibleItems); // Arrotonda per evitare problemi
+        },
+        adjustVisibleItems() {
+            // Modifica il numero di elementi visibili in base alla larghezza dello schermo
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 640) {
+                this.visibleItems = 1; // Smartphone
+            }
+            this.calculateItemWidth();
         },
         nextSlide() {
             if (this.currentIndex < this.photos.length - this.visibleItems) {
@@ -66,12 +75,12 @@ export default {
     },
     mounted() {
         // Calcola la larghezza dell'elemento quando il componente è montato
-        this.calculateItemWidth();
-        window.addEventListener("resize", this.calculateItemWidth);
+        this.adjustVisibleItems();
+        window.addEventListener("resize", this.adjustVisibleItems);
     },
     beforeDestroy() {
         // Rimuovi il listener di resize
-        window.removeEventListener("resize", this.calculateItemWidth);
+        window.removeEventListener("resize", this.adjustVisibleItems);
     },
 };
 </script>

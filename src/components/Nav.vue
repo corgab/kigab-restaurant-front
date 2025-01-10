@@ -22,7 +22,7 @@
                 <!-- Mobile menu button -->
                 <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
                     <button @click="isMobileMenuOpen = !isMobileMenuOpen"
-                        class="inline-flex items-center justify-center rounded-full p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        class="inline-flex items-center justify-center rounded-full p-2 text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                         <span class="sr-only">Open main menu</span>
                         <svg v-if="!isMobileMenuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -47,7 +47,7 @@
                             {{ restaurant.name }}
                         </div>
                     </router-link>
-                    <div class="hidden md:ml-6 md:block">
+                    <div class="hidden lg:ml-6 md:block">
                         <div class="flex space-x-3">
                             <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
                                 isActive(item.href.name)
@@ -60,12 +60,12 @@
                         </div>
                     </div>
                     <!-- Notification Bell and Profile Menu -->
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
+                    <!-- <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
                         <div class="hidden md:block">
                             <Button :text="'Book a table'" :isSmall="true" />
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

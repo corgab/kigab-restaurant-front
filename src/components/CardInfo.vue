@@ -3,14 +3,14 @@
         <!-- <div class=""> -->
         <!-- Immagine -->
         <div class="lg:relative block">
-            <div class="img_container w-max lg:w-2/3  overflow-hidden rounded-lg lg:shadow-lg">
-                <img :src="image" alt="" class="w-full h-auto rounded-lg lg:shadow-lg" />
+            <div class="img_container w-max lg:w-2/3  overflow-hidden rounded-t-lg md:rounded-lg lg:shadow-lg">
+                <img :src="image" alt="" class="w-full h-auto lg:shadow-lg" />
                 <!-- da inserire alt-->
             </div>
         </div>
         <!-- Scheda Informazioni -->
         <div
-            class="block lg:absolute lg:-bottom-8 lg:-right-5 transform  bg-gray text-white p-6 rounded-lg lg:shadow-xl lg:w-2/3 my-4 lg:my-0">
+            class="block lg:absolute lg:-bottom-8 lg:-right-5 transform  bg-gray text-white p-6 rounded-b-lg md:rounded-lg lg:shadow-xl lg:w-2/3 md:my-4 lg:my-0">
             <h2 class="text-xl font-semibold mb-4">Come and visit us</h2>
             <div class="space-y-3">
                 <!-- Telefono -->

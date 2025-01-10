@@ -8,7 +8,8 @@
                     :image="section.image_url" />
                 <!-- </div> -->
                 <!-- Colonna con testo -->
-                <div class=" lg:w-5/12 flex flex-col justify-center">
+                <div
+                    class=" lg:w-5/12 flex flex-col justify-center text-center lg:text-start my-10 lg:my-0 px-10 md:px-0">
                     <h1 class="play-fair text-3xl font-bold mb-10 lg:text-4xl">{{ section.title }}</h1>
                     <h2 class="leading-normal text-gray-900 text-base lg:text-lg mb-10">{{ section.content }}</h2>
                     <h3 class="leading-normal text-gray-700 text-base lg:text-lg">
