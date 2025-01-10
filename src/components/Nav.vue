@@ -104,10 +104,10 @@ export default {
             isMobileMenuOpen: false,
             navigation: [
                 { name: 'Home', href: { name: 'HomePage' } },
-                { name: 'About', href: { name: '' } },
-                { name: 'Menu', href: { name: '' } },
-                { name: 'Pages', href: { name: '' } },
-                { name: 'Contact', href: { name: '' } },
+                { name: 'About', href: '#' },
+                { name: 'Menu', href: '#' },
+                { name: 'Pages', href: '#' },
+                { name: 'Contact', href: '#' },
             ],
             restaurant: {},
         };
