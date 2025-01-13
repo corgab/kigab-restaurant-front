@@ -8,6 +8,7 @@ export default {
         hover: '#DBDFD0',
         bg2: '#F9F9F7',
         gray: '#474747',
+        footer: '#ADB29E',
       },
     },
   },

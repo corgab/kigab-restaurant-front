@@ -1,8 +1,7 @@
 <template>
-    <div class=" pb-20">
+    <div class="pt-10">
         <div class="map-container w-full overflow-hidden relative pb-64 sm:pb-80">
-            <iframe :src="mapLink" style="border:0;" allowfullscreen="true" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+            <iframe :src="mapLink" style="border:0;" allowfullscreen="true" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
         </div>
     </div>
@@ -20,7 +19,7 @@ export default {
         try {
             const response = await fetchRestaurant();
             this.mapLink = response.data.map_link;
-            console.log(response.data.map_link);
+            // console.log(response.data.map_link);
         } catch (error) {
             console.error('Errore nel recupero dei ristoranti:', error);
         }

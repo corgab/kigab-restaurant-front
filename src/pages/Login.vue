@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>ciao</h1>
+        <h1>Login Page</h1>
     </div>
 </template>
 
@@ -10,4 +10,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

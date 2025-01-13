@@ -4,20 +4,17 @@
             <div class="container mx-auto">
                 <div class="flex justify-between py-2">
                     <!-- Info -->
-                    <div class="text-[#F9F9F7] font-normal text-sm flex gap-x-4">
+                    <div class="text-[#F9F9F7] font-normal text-sm flex gap-x-4 ">
                         <!-- !! Da inserire icone -->
                         <h1 v-if="restaurant.phone">{{ restaurant.phone }}</h1>
                         <h1 v-if="restaurant.email">{{ restaurant.email }}</h1>
                     </div>
                     <!-- Socials -->
-                    <div>
-
-                    </div>
+                    <div></div>
                 </div>
             </div>
         </div>
         <div class="container mx-auto">
-            <!-- <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8"> -->
             <div class="relative flex h-16 items-center justify-between">
                 <!-- Mobile menu button -->
                 <div class="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -38,52 +35,48 @@
                 </div>
 
                 <!-- Logo and navigation links -->
-                <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-between">
-                    <router-link class="flex shrink-0 items-center" :to="{ name: 'HomePage' }">
+                <div class="flex flex-1 items-center justify-center  md:justify-between">
+                    <router-link class="flex shrink-0 items-center" :to="{ name: 'Home' }">
                         <!-- Inserire immagine ristorante -->
-                        <img v-if="restaurant.image_url" class="h-8 w-auto" :src="restaurant.image_url"
+                        <img v-if="restaurant.image_url" class="w-12" :src="restaurant.image_url"
                             :alt="`${restaurant.name} logo`" />
                         <div class="text-main rounded-full px-3 py-1 font-bold text-xl">
-                            {{ restaurant.name }}
+                            <h1 class="play-fair text-2xl">{{ restaurant.name }}</h1>
                         </div>
                     </router-link>
-                    <div class="hidden lg:ml-6 md:block">
-                        <div class="flex space-x-3">
-                            <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
-                                isActive(item.href.name)
-                                    ? 'bg-hover text-main'
-                                    : 'text-main hover:bg-hover',
+                    <div class="hidden lg:ml-6 md:block ">
+                        <div class="flex space-x-3 ">
+                            <!-- Navigazione dinamica -->
+                            <router-link v-for="route in routes" :key="route.name" :to="{ name: route.name }" :class="[
+                                isActive(route.name) ? 'bg-hover text-main' : 'text-main hover:bg-hover',
                                 'rounded-full px-5 py-2 text-sm font-medium',
-                            ]" :aria-current="isActive(item.href.name) ? 'page' : undefined">
-                                {{ item.name }}
+                            ]" :aria-current="isActive(route.name) ? 'page' : undefined">
+                                {{ route.name }}
                             </router-link>
                         </div>
                     </div>
                     <!-- Notification Bell and Profile Menu -->
                     <!-- <div class="absolute inset-y-0 right-0 flex items-center pr-2 md:static md:inset-auto md:pr-0">
-                        <div class="hidden md:block">
-                            <Button :text="'Book a table'" :isSmall="true" />
-
-                        </div>
-                    </div> -->
+              <div class="hidden md:block">
+                  <Button :text="'Book a table'" :isSmall="true" />
+              </div>
+            </div> -->
                 </div>
             </div>
 
             <!-- Mobile menu -->
             <div v-if="isMobileMenuOpen" class="md:hidden py-5">
                 <div class="space-y-1 px-2 pb-3 pt-2">
-                    <router-link v-for="item in navigation" :key="item.name" :to="item.href" :class="[
-                        isActive(item.href.name)
-                            ? 'bg-hover text-main'
-                            : 'text-main hover:bg-hover',
+                    <router-link v-for="route in routes" :key="route.name" :to="{ name: route.name }" :class="[
+                        isActive(route.name) ? 'bg-hover text-main' : 'text-main hover:bg-hover',
                         'block rounded-full px-3 py-2 text-base font-medium',
-                    ]" :aria-current="isActive(item.href.name) ? 'page' : undefined">
-                        {{ item.name }}
+                    ]" :aria-current="isActive(route.name) ? 'page' : undefined">
+                        {{ route.name }}
                     </router-link>
                 </div>
                 <!-- Book a Table -->
                 <div
-                    class="block mx-auto rounded-full border-2 border-main bg-main px-1 py-2 text-center font-medium text-base ">
+                    class="block mx-auto rounded-full border-2 border-main bg-main px-1 py-2 text-center font-medium text-base">
                     <Button :text="'Book a table'" class="text-white" />
                 </div>
             </div>
@@ -94,6 +87,7 @@
 <script>
 import { fetchRestaurant } from '@/services/restaurants';;
 import Button from './Button.vue'
+import router from '@/router';
 
 export default {
     components: {
@@ -102,15 +96,13 @@ export default {
     data() {
         return {
             isMobileMenuOpen: false,
-            navigation: [
-                { name: 'Home', href: { name: 'HomePage' } },
-                { name: 'About', href: '#' },
-                { name: 'Menu', href: '#' },
-                { name: 'Pages', href: '#' },
-                { name: 'Contact', href: '#' },
-            ],
             restaurant: {},
         };
+    },
+    computed: {
+        routes() {
+            return router.options.routes.filter(route => route.name);
+        },
     },
     methods: {
         isActive(routeName) {
@@ -128,3 +120,10 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.play-fair {
+    font-weight: 600;
+    font-style: italic;
+}
+</style>
