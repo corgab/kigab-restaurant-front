@@ -58,7 +58,7 @@ export default {
         try {
             const response = await fetchRestaurant();
             this.restaurant = response.data;
-            console.log(this.restaurant);
+            // console.log(this.restaurant);
         } catch (error) {
             console.error('Errore nel recupero dei dati:', error);
         }
