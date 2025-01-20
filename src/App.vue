@@ -1,20 +1,16 @@
 <template>
   <Nav />
   <RouterView />
-  <Footer :routes="routes" />
+  <Footer />
 </template>
 
 <script>
 import Nav from './components/Nav.vue'
 import Footer from './components/Footer.vue'
-import router from './router';
 export default {
   components: {
     Nav,
-    Footer
-  },
-  computed: {
-
+    Footer,
   },
 }
 </script>

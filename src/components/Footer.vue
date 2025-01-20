@@ -44,6 +44,9 @@ import { fetchRestaurant } from '@/services/restaurants.js';
 import router from '@/router';
 
 export default {
+    components: {
+        router,
+    },
     data() {
         return {
             restaurant: {},

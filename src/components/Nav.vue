@@ -91,7 +91,8 @@ import router from '@/router';
 
 export default {
     components: {
-        Button
+        Button,
+        router
     },
     data() {
         return {
